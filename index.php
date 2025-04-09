@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . '/init.php';
 
+if (!isset($_SESSION['user'])) {
+    header('Location: /login.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['comment']) && isset($_SESSION['user'])) {
         $comment = $_POST['comment'];
